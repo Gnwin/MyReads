@@ -3,9 +3,6 @@ import React from 'react'
 import './App.css'
 
 import BookShelf from './BookShelf'
-import CurrentlyReading from './CurrentlyReading'
-import WantToRead from './WantToRead'
-import Read from './Read'
 
 
 
@@ -25,14 +22,14 @@ class App extends React.Component {
     ]
   }
   
-  //componentDidMount(){
-    //BooksAPI.getAll()
-    //.then((books)=>{
-      //this.setState(()=>({
-        //books
-      //}))
-    //})
-  //}
+  componentDidMount(){
+    BooksAPI.getAll()
+    .then((books)=>{
+      this.setState(()=>({
+        books
+      }))
+    })
+  }
   
   //console.log(this.state.books);
   
@@ -45,11 +42,7 @@ class App extends React.Component {
       	  <h1>MyReads</h1>
       	</div>
       
-         <BookShelf books={this.state.books}>
-      	  <CurrentlyReading/>
-      	  <WantToRead/>
-      	  <Read/>
-      	</BookShelf>
+        <BookShelf books={this.state.books} />
 
       
       </div>
