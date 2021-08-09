@@ -3,6 +3,7 @@ import React from 'react'
 import CurrentlyReading from './CurrentlyReading'
 import WantToRead from './WantToRead'
 import Read from './Read'
+import { Link } from 'react-router-dom'
 
 
 
@@ -29,6 +30,10 @@ class BookShelf extends React.Component {
 		  <CurrentlyReading currentlyReading={this.addBooks(books)[0]} />
       	  <WantToRead wantToRead={this.addBooks(books)[1]} />
       	  <Read read={this.addBooks(books)[2]} />
+        </div>
+
+		<div className="open-search">
+          <Link to='/search' >Add a book</Link>
         </div>
       </div>
 
