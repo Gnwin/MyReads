@@ -23,6 +23,7 @@ class BookShelf extends React.Component {
     const { books } = this.props;
     
     return(
+      
       <div className="list-books-content">
         <div>
 		  <CurrentlyReading currentlyReading={this.addBooks(books)[0]} />
@@ -30,6 +31,8 @@ class BookShelf extends React.Component {
       	  <Read read={this.addBooks(books)[2]} />
         </div>
       </div>
+
+
     )
   }
 }

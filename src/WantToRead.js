@@ -12,8 +12,7 @@ class WantToRead extends React.Component {
     const books2 = this.props.wantToRead;
     
     return(
-      <div className="list-books-content">
-      <div>
+
       <div className="bookshelf">
       <h2 className="bookshelf-title">{this.state.title}</h2>
       <div className="bookshelf-books">
@@ -41,8 +40,7 @@ class WantToRead extends React.Component {
          </ol>
        </div>
        </div>
-       </div>
-       </div>
+
     )
   }
 }
