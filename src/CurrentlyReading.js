@@ -3,7 +3,8 @@ import React from 'react'
 
 class CurrentlyReading extends React.Component {
   state = {
-    currentlyReading: []
+    currentlyReading: [],
+    title: 'Currently Reading'
   }
   
   //updateState = (cR)=> {
@@ -14,8 +15,13 @@ class CurrentlyReading extends React.Component {
   
   render(){
     const books1 = this.props.currentlyReading;
+
     
     return(
+      <div className="list-books-content">
+      <div>
+      <div className="bookshelf">
+      <h2 className="bookshelf-title">{this.state.title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
            {books1.map((book)=>(
@@ -35,12 +41,13 @@ class CurrentlyReading extends React.Component {
                  </div>
                  <div className="book-title">{book.title}</div>
                  <div className="book-authors">{book.authors}</div>
-                 <div>{book.subtitle}</div>
-                 <div>{book.shelf}</div>
                </div>
              </li>
            ))}
          </ol>
+       </div>
+       </div>
+       </div>
        </div>
     )
   }

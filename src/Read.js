@@ -3,13 +3,18 @@ import React from 'react'
 
 class Read extends React.Component {
   state = {
-    read: []
+    read: [],
+    title: 'Read'
   }
   
   render(){
     const books3 = this.props.read;
     
     return(
+      <div className="list-books-content">
+      <div>
+      <div className="bookshelf">
+      <h2 className="bookshelf-title">{this.state.title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
            {books3.map((book)=>(
@@ -29,12 +34,13 @@ class Read extends React.Component {
                  </div>
                  <div className="book-title">{book.title}</div>
                  <div className="book-authors">{book.authors}</div>
-                 <div>{book.subtitle}</div>
-                 <div>{book.shelf}</div>
                </div>
              </li>
            ))}
          </ol>
+       </div>
+       </div>
+       </div>
        </div>
     )
   }
