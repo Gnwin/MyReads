@@ -1,5 +1,5 @@
 import React from 'react'
-//import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 import BookShelf from './BookShelf'
@@ -8,18 +8,7 @@ import BookShelf from './BookShelf'
 
 class App extends React.Component {
   state = {
-    books: [
-      {
-        id: 1,
-        name: 'The Order of the Phoenix',
-        author: 'Harry Potter'
-      },
-      {
-        id: 2,
-        name: 'Wall Street Struggles',
-        author: 'Peter Wigglesworth'
-      }
-    ]
+    books: []
   }
   
   componentDidMount(){
@@ -34,7 +23,6 @@ class App extends React.Component {
   //console.log(this.state.books);
   
   render(){
-    console.log(this.state.books);
     return(
       <div className="list-books">
       
