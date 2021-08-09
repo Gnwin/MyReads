@@ -10,7 +10,8 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+    Books: []
   }
 
   render() {
@@ -33,6 +34,7 @@ class BooksApp extends React.Component {
 
               </div>
             </div>
+
             <div className="search-books-results">
               <ol className="books-grid"></ol>
             </div>
