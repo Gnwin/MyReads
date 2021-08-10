@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import MoveItem from './MoveItem'
 
 
 class SearchPage extends React.Component {
@@ -27,9 +28,13 @@ class SearchPage extends React.Component {
     
     const allBooks = this.props.allBooks1;
     
-    //console.log(typeof allBooks);
+    //const allBooks = result;
     
-    const showingBooks = query === '' ? '' :  allBooks;
+    console.log(typeof allBooks);
+    
+    const showingBooks = query === '' ? [] :  allBooks;
+    
+    console.log(showingBooks);
     
     return(
           <div className="search-books">
@@ -56,16 +61,30 @@ class SearchPage extends React.Component {
 
             <div className="search-books-results">
 
-			{showingBooks.length !== limit && (
+{/*{showingBooks.length !== limit && (
               <div className='showing-books'>
                 <span>Now Showing {showingBooks.length} of {limit}</span>
-			    {/*<button onClick={this.clearQuery}>Show all</button>*/}
-             </div>
-            )}	
+			    {/*<button onClick={this.clearQuery}>Show all</button>*
+             </div>)}*/}
 			
               <ol className="books-grid">
-				
+
+				{showingBooks.map((book)=>(
+                  <li key={book.id}>
+                    <div className="book">
+                      <div className="book-top">
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${book.imageLinks.thumbnail})`}}></div>
+                        <div className="book-shelf-changer">
+                          <MoveItem name={this.state.title} />
+                        </div>
+                      </div>
+                    <div className="book-title">{book.title}</div>
+                    <div className="book-authors">{book.authors}</div>
+                    </div>
+                  </li>
+                ))}
 		      </ol>
+              
             </div>
           </div>
     )

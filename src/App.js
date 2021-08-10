@@ -24,15 +24,14 @@ class App extends React.Component {
     })
   }
   
-  searchBooks = (book, limit) => {
-    BooksAPI.search(book, limit)
-    .then((allBooks)=>{
-      this.setState(()=>({
-        allBooks
-      }))
-    })
- 
-  }
+  //searchBooks = (book, limit) => {
+    //BooksAPI.search(book, limit)
+    //.then((allBooks)=>{
+      //this.setState(()=>({
+        //allBooks
+      //}))
+    //})
+  //}
     
   
   render(){
