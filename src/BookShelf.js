@@ -1,8 +1,7 @@
 import React from 'react'
 
-import CurrentlyReading from './CurrentlyReading'
-import WantToRead from './WantToRead'
-import Read from './Read'
+import Shelf from './Shelf'
+
 import { Link } from 'react-router-dom'
 
 
@@ -12,12 +11,20 @@ class BookShelf extends React.Component {
     shelfNames: ["currentlyReading", "wantToRead", "read"]
   }
   
+  createShelf = (shelf, currentShelfNames) => {
+    this.setState((currentShelfNames)=({
+      shelfNames: [...currentShelfNames.shelfNames, shelf]
+    }))
+  }
   
-  addBooks=items=>{
-    const shelf1 = items.filter(item =>item.shelf === this.state.shelfNames[0]);
-    const shelf2 = items.filter(item =>item.shelf === this.state.shelfNames[1]);
-    const shelf3 = items.filter(item =>item.shelf === this.state.shelfNames[2]);
-    return [shelf1, shelf2, shelf3];
+  //takes in the books object from the API
+  addBooks = items => {
+    const shelfs = [];
+    for (let i = 0; i < this.state.shelfNames.length; i++){
+      const shelf = items.filter(item =>item.shelf === this.state.shelfNames[i]);
+      shelfs.push(shelf);
+    }
+    return shelfs;
   }
   
   render(){
@@ -27,16 +34,15 @@ class BookShelf extends React.Component {
       
       <div className="list-books-content">
         <div>
-		  <CurrentlyReading currentlyReading={this.addBooks(books)[0]} />
-      	  <WantToRead wantToRead={this.addBooks(books)[1]} />
-      	  <Read read={this.addBooks(books)[2]} />
+        {this.state.shelfNames.map((name, index)=>(
+          <Shelf key={name} shelf={name} content={this.addBooks(books)[index]} />
+		))}
         </div>
 
 		<div className="open-search">
           <Link to='/search' >Add a book</Link>
         </div>
       </div>
-
 
     )
   }

@@ -2,9 +2,9 @@ import React from 'react'
 
 
 class MoveItem extends React.Component {
-  state = {
-    
-  }
+  //state = {
+    //value =
+  //}
     
   
   render(){
@@ -13,10 +13,10 @@ class MoveItem extends React.Component {
     return(
       <select>
         <option value="move" disabled>Move to...</option>
-        <option value="currentlyReading" >Currently Reading</option>
+        <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>
-        <option value="read" >Read</option>
-        <option value="none" >None</option>
+        <option value="read">Read</option>
+        <option value="none">None</option>
       </select>
     )
   }
