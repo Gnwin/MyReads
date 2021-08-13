@@ -31,7 +31,7 @@ class Book extends React.Component {
     const author = this.props.writer;
     const category = this.props.rank;
     const bookObject = this.props.bookobj;
-    
+    const koio = this.props.weyer;
     
     return(
       <li >
@@ -39,7 +39,7 @@ class Book extends React.Component {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${image})`}}></div>
               <div className="book-shelf-changer">
-                <MoveItem shelfrank={category} title1={title} bookcomp={bookObject} />
+                <MoveItem shelfrank={category} title1={title} bookcomp={bookObject} uiouio={koio} />
               </div>
             </div>
           <div className="book-title">{title}</div>

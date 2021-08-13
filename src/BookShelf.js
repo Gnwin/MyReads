@@ -19,6 +19,7 @@ class BookShelf extends React.Component {
   //takes in the books object from the API
   addBooks = items => {
     const shelfs = [];
+    console.log(items);
     for (let i = 0; i < this.state.shelfNames.length; i++){
       const shelf = items.filter(item =>item.shelf === this.state.shelfNames[i]);
       shelfs.push(shelf);
@@ -41,13 +42,14 @@ class BookShelf extends React.Component {
   
   render(){
     const { books } = this.props;
+    const updateShelfbook = this.props.updateShelf
     
     return(
       
       <div className="list-books-content">
         <div>
         {this.state.shelfNames.map((name, index)=>(
-          <Shelf key={name} shelf={name} content={this.addBooks(books)[index]} />
+          <Shelf key={name} shelf={name} content={this.addBooks(books)[index]} rankShelf={updateShelfbook} />
 		))}
         </div>
 

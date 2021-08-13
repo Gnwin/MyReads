@@ -33,18 +33,15 @@ class App extends React.Component {
     })
   }
   
-  //changeRank = (e) => {
-    //const curr_rank = e.target.value;
-    //this.setState(()=>{(
-      //value: curr_rank
-    //)})
-    //BooksAPI.update(this.props.title1, this.state.value)
-    //.then((books)=>{
-      //this.setState(()=>({
-        //books
-      //}))
-    //})
-  //}
+  updateBooks = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+    .then((books)=>{
+      this.setState(()=>({
+        //books: oldBooks.books.concat(books)
+        books
+      }))
+    })
+  }
   
   
   render(){
@@ -56,12 +53,12 @@ class App extends React.Component {
       	</div>
         
         <Route exact path='/' render={()=>(
-          <BookShelf books={this.state.books} />
+          <BookShelf books={this.state.books} updateShelf={this.updateBooks} />
         )} />
 
 		
 		<Route path='/search' render={({ history })=>(
-          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks} 
+          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks}
         />
         )}/>
 

@@ -21,6 +21,7 @@ class Shelf extends React.Component{
   render(){
     const name = this.props.shelf;
     const bookss = this.props.content;
+    const fhfhf = this.props.rankShelf;
     
     return(
     
@@ -29,7 +30,7 @@ class Shelf extends React.Component{
         <div className="bookshelf-books">
           <ol className="books-grid">
           {bookss.map((book)=>(
-		    <Book key={book.id} bookobj={book} pic={book.imageLinks.thumbnail} caption={book.title} writer={book.authors} rank={book.shelf}   />
+		    <Book key={book.id} bookobj={book} pic={book.imageLinks.thumbnail} caption={book.title} writer={book.authors} rank={book.shelf} weyer={fhfhf}  />
           ))}
           </ol>
         </div>
