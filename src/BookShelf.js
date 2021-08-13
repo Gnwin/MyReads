@@ -1,7 +1,6 @@
 import React from 'react'
-
+import * as BooksAPI from './BooksAPI'
 import Shelf from './Shelf'
-
 import { Link } from 'react-router-dom'
 
 
@@ -25,6 +24,19 @@ class BookShelf extends React.Component {
       shelfs.push(shelf);
     }
     return shelfs;
+  }
+  
+  changeRank = (e) => {
+    const curr_rank = e.target.value;
+    this.setState(()=>({
+      value: curr_rank
+    }))
+    BooksAPI.update(this.props.title1, this.state.value)
+    .then((books)=>{
+      this.setState(()=>({
+        books
+      }))
+    })
   }
   
   render(){

@@ -24,15 +24,28 @@ class App extends React.Component {
     })
   }
   
-  //searchBooks = (book, limit) => {
-    //BooksAPI.search(book, limit)
-    //.then((allBooks)=>{
+  searchBooks = (book, limit) => {
+    BooksAPI.search(book, limit)
+    .then((allBooks)=>{
+      this.setState(()=>({
+        allBooks
+      }))
+    })
+  }
+  
+  //changeRank = (e) => {
+    //const curr_rank = e.target.value;
+    //this.setState(()=>{(
+      //value: curr_rank
+    //)})
+    //BooksAPI.update(this.props.title1, this.state.value)
+    //.then((books)=>{
       //this.setState(()=>({
-        //allBooks
+        //books
       //}))
     //})
   //}
-    
+  
   
   render(){
     return(
@@ -48,7 +61,7 @@ class App extends React.Component {
 
 		
 		<Route path='/search' render={({ history })=>(
-          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks}
+          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks} 
         />
         )}/>
 

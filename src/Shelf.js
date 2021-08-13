@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Book from './Book'
 
 
@@ -30,7 +29,7 @@ class Shelf extends React.Component{
         <div className="bookshelf-books">
           <ol className="books-grid">
           {bookss.map((book)=>(
-		    <Book key={book.id} pic={book.imageLinks.thumbnail} caption={book.title} writer={book.authors}  />
+		    <Book key={book.id} bookobj={book} pic={book.imageLinks.thumbnail} caption={book.title} writer={book.authors} rank={book.shelf}   />
           ))}
           </ol>
         </div>
