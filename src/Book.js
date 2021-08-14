@@ -3,29 +3,8 @@ import MoveItem from './MoveItem'
 
 
 class Book extends React.Component {
-  //state = {
-    //category: ""
-  //}
- 
-  
-  
-  //updateBooks = (book, shelf) => {
-    //BooksAPI.update(book, shelf)
-    //.then((books)=>{
-      //this.setState(()=>({
-        //books
-      //}))
-    //})
-  //}
-  
-  //updateCategory=rank=>{
-    //this.setState(()=>({
-      //category: rank
-    //}))
-  //}
   
   render(){
-    
     const image = this.props.pic;
     const title = this.props.caption;
     const author = this.props.writer;
@@ -48,6 +27,7 @@ class Book extends React.Component {
       </li>
     )
   }
+  
 }
 
 export default Book

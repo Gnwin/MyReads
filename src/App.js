@@ -2,7 +2,6 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import { Route } from 'react-router-dom'
-//import { Link } from 'react-router-dom'
 
 import BookShelf from './BookShelf'
 import SearchPage from './SearchPage'
@@ -37,7 +36,6 @@ class App extends React.Component {
     BooksAPI.update(book, shelf)
     .then((books)=>{
       this.setState(()=>({
-        //books: oldBooks.books.concat(books)
         books
       }))
     })
@@ -57,12 +55,10 @@ class App extends React.Component {
         )} />
 
 		
-		<Route path='/search' render={({ history })=>(
-          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks}
-        />
+		    <Route path='/search' render={({ history })=>(
+          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks} />
         )}/>
 
-		
       </div>
     )
   }
