@@ -1,5 +1,5 @@
 import React from 'react'
-import MoveItem from './MoveItem'
+import SelectShelf from './SelectShelf'
 
 
 class Book extends React.Component {
@@ -17,7 +17,7 @@ class Book extends React.Component {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${bookCoverImg})`}}></div>
               <div className="book-shelf-changer">
-                <MoveItem bookobj={bookObject} updatebook={updateBook} />
+                <SelectShelf bookobj={bookObject} updatebook={updateBook} />
               </div>
           </div>
           <div className="book-title">{bookTitle}</div>

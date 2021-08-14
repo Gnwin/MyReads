@@ -56,7 +56,7 @@ class App extends React.Component {
 
 		
 		    <Route path='/search' render={({ history })=>(
-          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks} />
+          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks} onUpdateBooks={this.updateBooks} />
         )}/>
 
       </div>

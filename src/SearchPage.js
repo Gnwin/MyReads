@@ -6,9 +6,8 @@ import Book from './Book'
 class SearchPage extends React.Component {
   state = {
     query: "",
-    limit: 20
+    limit: 10
   }
-
 
   updateQuery = (query) => {
     this.setState(()=>({
@@ -16,8 +15,16 @@ class SearchPage extends React.Component {
     }))
     this.props.onSearchBooks(this.state.query, this.state.limit);
   }
-  
 
+  // changeRank = (bookObject, value) => {
+  //   console.log(value);
+  //   if (value === 'none' || value === 'move' ){
+  //     return;
+  //   }
+  //   console.log(bookObject, value);
+  //   this.props.onUpdateBooks(bookObject, value);
+  // }
+  
   clearQuery = () => {
     this.updateQuery('');
   }
@@ -26,7 +33,8 @@ class SearchPage extends React.Component {
 	
     const allBooks = this.props.allBooks1;
     const showingBooks = this.state.query === '' ? [] :  allBooks;
-    
+    const addBooksToShelf = this.props.onUpdateBooks;
+
     return(
 
       <div className="search-books">
@@ -38,7 +46,7 @@ class SearchPage extends React.Component {
               type="text" 
               placeholder="Search by title or author"
               value={this.state.query}
-              onChange={(event)=> this.updateQuery(event.target.value)}
+              onChange={(e)=> this.updateQuery(e.target.value)}
             />
 
           </div>
@@ -55,11 +63,11 @@ class SearchPage extends React.Component {
 				  {showingBooks.map((book)=>(
             <Book 
               key={book.id} 
-              bookobj={book} 
-              pic={book.imageLinks.thumbnail} 
-              caption={book.title} 
-              writer={book.authors} 
-              rank={book.shelf}
+              bookItem={book} 
+              thumbnail={book.imageLinks.thumbnail} 
+              title={book.title} 
+              author={book.authors} 
+              updateshelf={addBooksToShelf}
             />
           ))}
 		      </ol>   

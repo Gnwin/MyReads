@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-class MoveItem extends React.Component {
+class SelectShelf extends React.Component {
   
   changeRank = (bookObject, value) => {
     console.log(value);
@@ -17,7 +17,7 @@ class MoveItem extends React.Component {
     const book = this.props.bookobj;
     
     return(
-      <select value={book.shelf} onChange={(e)=>this.changeRank(book, e.target.value)}>
+      <select value={book.shelf ? book.shelf : 'none'} onChange={(e)=>this.changeRank(book, e.target.value)}>
         <option value="move" disabled >Move to...</option>
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>
@@ -29,4 +29,4 @@ class MoveItem extends React.Component {
 
 }
 
-export default MoveItem
+export default SelectShelf

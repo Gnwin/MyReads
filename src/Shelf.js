@@ -3,7 +3,6 @@ import Book from './Book'
 
 
 class Shelf extends React.Component{
-
   render(){
     const name = this.props.shelf;
     const books = this.props.content;
@@ -16,7 +15,14 @@ class Shelf extends React.Component{
         <div className="bookshelf-books">
           <ol className="books-grid">
           {books.map((book)=>(
-		        <Book key={book.id} bookItem={book} thumbnail={book.imageLinks.thumbnail} title={book.title} author={book.authors} updateshelf={updateShelf}  />
+		        <Book 
+              key={book.id} 
+              bookItem={book} 
+              thumbnail={book.imageLinks.thumbnail} 
+              title={book.title} 
+              author={book.authors} 
+              updateshelf={updateShelf}
+            />
           ))}
           </ol>
         </div>
@@ -24,7 +30,6 @@ class Shelf extends React.Component{
 
     )
   }
-
 }
 
 

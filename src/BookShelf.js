@@ -6,7 +6,6 @@ import Shelf from './Shelf'
 
 
 class BookShelf extends React.Component {
-  
   state = {
     shelfNames: ["currentlyReading", "wantToRead", "read"]
   }
@@ -19,21 +18,27 @@ class BookShelf extends React.Component {
     return shelfs;
   }
   
-  createShelf = (shelf, currentShelfNames) => {
+  createShelf = (currentShelfNames, shelf) => {
     this.setState((currentShelfNames)=({
       shelfNames: [...currentShelfNames.shelfNames, shelf]
     }))
   }
   
   render(){
-    const { books, updateBookShelf } = this.props;
+    const books = this.props.books;
+    const updateBookShelf = this.props.onUpdateBooks;
     
     return(
       
       <div className="list-books-content">
         <div>
         {this.state.shelfNames.map((name, index)=>(
-          <Shelf key={name} shelf={name} content={this.addBooks(books)[index]} updatebookshelf={updateBookShelf} />
+          <Shelf 
+            key={name} 
+            shelf={name} 
+            content={this.addBooks(books)[index]} 
+            updatebookshelf={updateBookShelf} 
+          />
 		    ))}
         </div>
 
