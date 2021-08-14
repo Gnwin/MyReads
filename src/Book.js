@@ -5,29 +5,28 @@ import MoveItem from './MoveItem'
 class Book extends React.Component {
   
   render(){
-    const image = this.props.pic;
-    const title = this.props.caption;
-    const author = this.props.writer;
-    const category = this.props.rank;
-    const bookObject = this.props.bookobj;
-    const koio = this.props.weyer;
+    const bookCoverImg = this.props.thumbnail;
+    const bookTitle = this.props.title;
+    const bookAuthor = this.props.author;
+    const bookObject = this.props.bookItem;
+    const updateBook = this.props.updateshelf;
     
     return(
-      <li >
-	    <div className="book">
+      <li>
+        <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${image})`}}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${bookCoverImg})`}}></div>
               <div className="book-shelf-changer">
-                <MoveItem shelfrank={category} title1={title} bookcomp={bookObject} uiouio={koio} />
+                <MoveItem bookobj={bookObject} updatebook={updateBook} />
               </div>
-            </div>
-          <div className="book-title">{title}</div>
-        <div className="book-authors">{author}</div>
-       </div>
+          </div>
+          <div className="book-title">{bookTitle}</div>
+          <div className="book-authors">{bookAuthor}</div>
+        </div>
       </li>
     )
   }
-  
+
 }
 
 export default Book

@@ -3,21 +3,21 @@ import React from 'react'
 
 class MoveItem extends React.Component {
   
-  changeRank = (bookkObbjj, valuee) => {
-    console.log(valuee);
-    if (valuee === 'none' || valuee === 'move' ){
+  changeRank = (bookObject, value) => {
+    console.log(value);
+    if (value === 'none' || value === 'move' ){
       return;
     }
-    console.log(bookkObbjj, valuee);
-    this.props.uiouio(bookkObbjj, valuee);
+    console.log(bookObject, value);
+    this.props.updatebook(bookObject, value);
   }
   
   render(){
     
-    const bookk = this.props.bookcomp;
+    const book = this.props.bookobj;
     
     return(
-      <select value={bookk.shelf} onChange={(e)=>this.changeRank(bookk, e.target.value)}>
+      <select value={book.shelf} onChange={(e)=>this.changeRank(book, e.target.value)}>
         <option value="move" disabled >Move to...</option>
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>

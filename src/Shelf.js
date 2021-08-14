@@ -6,8 +6,8 @@ class Shelf extends React.Component{
 
   render(){
     const name = this.props.shelf;
-    const bookss = this.props.content;
-    const fhfhf = this.props.rankShelf;
+    const books = this.props.content;
+    const updateShelf = this.props.updatebookshelf;
     
     return(
     
@@ -15,8 +15,8 @@ class Shelf extends React.Component{
         <h2 className="bookshelf-title">{name}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-          {bookss.map((book)=>(
-		        <Book key={book.id} bookobj={book} pic={book.imageLinks.thumbnail} caption={book.title} writer={book.authors} rank={book.shelf} weyer={fhfhf}  />
+          {books.map((book)=>(
+		        <Book key={book.id} bookItem={book} thumbnail={book.imageLinks.thumbnail} title={book.title} author={book.authors} updateshelf={updateShelf}  />
           ))}
           </ol>
         </div>

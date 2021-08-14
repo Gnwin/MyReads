@@ -51,7 +51,7 @@ class App extends React.Component {
       	</div>
         
         <Route exact path='/' render={()=>(
-          <BookShelf books={this.state.books} updateShelf={this.updateBooks} />
+          <BookShelf books={this.state.books} onUpdateBooks={this.updateBooks} />
         )} />
 
 		

@@ -12,17 +12,10 @@ class BookShelf extends React.Component {
   }
   
   addBooks = items => {
-    // const shelfs = [];
-    // for (let i = 0; i < this.state.shelfNames.length; i++){
-    //   const shelf = items.filter(item =>item.shelf === this.state.shelfNames[i]);
-    //   shelfs.push(shelf);
-    // }
-
     const shelfs = this.state.shelfNames.map((name) => {
       const shelf = items.filter(item =>item.shelf === name);
       return shelf;
     })
-
     return shelfs;
   }
   
@@ -33,15 +26,14 @@ class BookShelf extends React.Component {
   }
   
   render(){
-    const { books } = this.props;
-    const updateShelfbook = this.props.updateShelf
+    const { books, updateBookShelf } = this.props;
     
     return(
       
       <div className="list-books-content">
         <div>
         {this.state.shelfNames.map((name, index)=>(
-          <Shelf key={name} shelf={name} content={this.addBooks(books)[index]} rankShelf={updateShelfbook} />
+          <Shelf key={name} shelf={name} content={this.addBooks(books)[index]} updatebookshelf={updateBookShelf} />
 		    ))}
         </div>
 
