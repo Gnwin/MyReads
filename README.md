@@ -1,4 +1,5 @@
 # MyReads Project
+This is a Book Shelf App where books are arranged in different shelfs and can also be rearranged with the drop down icon attached to each book. Books can also be searched for and added to different shelves.
 
 This is a Book shelf project where books can be reorganized into different shelves. I added interactivity to the app by refactoring the static code in this template. This project demonstrates the us e of React,s components, controlled components, Managing state, e.t.c.
 
