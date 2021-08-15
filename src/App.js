@@ -15,6 +15,10 @@ class App extends React.Component {
   }
   
   componentDidMount(){
+    this.getAllBooks();
+  }
+
+  getAllBooks = () =>{
     BooksAPI.getAll()
     .then((books)=>{
       this.setState(()=>({
@@ -34,13 +38,10 @@ class App extends React.Component {
   
   updateBooks = (book, shelf) => {
     BooksAPI.update(book, shelf)
-    .then((books)=>{
-      this.setState(()=>({
-        books
-      }))
+      .then(()=>{
+        this.getAllBooks();
     })
   }
-  
   
   render(){
     return(

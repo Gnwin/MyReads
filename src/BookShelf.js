@@ -6,6 +6,7 @@ import Shelf from './Shelf'
 
 
 class BookShelf extends React.Component {
+
   state = {
     shelfNames: ["currentlyReading", "wantToRead", "read"]
   }
@@ -27,7 +28,8 @@ class BookShelf extends React.Component {
   render(){
     const books = this.props.books;
     const updateBookShelf = this.props.onUpdateBooks;
-    
+  
+
     return(
       
       <div className="list-books-content">
@@ -43,7 +45,7 @@ class BookShelf extends React.Component {
         </div>
 
 		    <div className="open-search">
-          <Link to='/search' >Add a book</Link>
+          <Link to='/search'>Add a book</Link>
         </div>
       </div>
 

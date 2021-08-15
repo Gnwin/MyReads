@@ -11,19 +11,13 @@ class SearchPage extends React.Component {
 
   updateQuery = (query) => {
     this.setState(()=>({
-      query: query.trim()
+      query
     }))
+
+    if (query.length < 3) return;
+
     this.props.onSearchBooks(this.state.query, this.state.limit);
   }
-
-  // changeRank = (bookObject, value) => {
-  //   console.log(value);
-  //   if (value === 'none' || value === 'move' ){
-  //     return;
-  //   }
-  //   console.log(bookObject, value);
-  //   this.props.onUpdateBooks(bookObject, value);
-  // }
   
   clearQuery = () => {
     this.updateQuery('');
