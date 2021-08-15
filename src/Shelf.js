@@ -18,7 +18,7 @@ class Shelf extends React.Component{
 		        <Book 
               key={book.id} 
               bookItem={book} 
-              thumbnail={book.imageLinks.thumbnail} 
+              thumbnail={book.imageLinks.thumbnail}  
               title={book.title} 
               author={book.authors} 
               updateshelf={updateShelf}
