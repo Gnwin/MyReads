@@ -11,7 +11,7 @@ import SearchPage from './SearchPage'
 class App extends React.Component {
   state = {
     books: [],
-    allBooks: []
+    searchResults: []
   }
   
   componentDidMount(){
@@ -57,7 +57,7 @@ class App extends React.Component {
 
 		
 		    <Route path='/search' render={({ history })=>(
-          <SearchPage onSearchBooks={this.searchBooks} allBooks1={this.state.allBooks} onUpdateBooks={this.updateBooks} />
+          <SearchPage onSearchBooks={this.searchBooks} searchresults={this.state.searchResults} onUpdateBooks={this.updateBooks} />
         )}/>
 
       </div>

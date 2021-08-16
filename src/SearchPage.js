@@ -14,7 +14,7 @@ class SearchPage extends React.Component {
       query
     }))
 
-    if (query.length < 3) return;
+    //if (query.length < 3) return;
 
     this.props.onSearchBooks(this.state.query, this.state.limit);
   }
@@ -25,8 +25,8 @@ class SearchPage extends React.Component {
   
   render(){
 	
-    const allBooks = this.props.allBooks1;
-    const showingBooks = this.state.query === '' ? [] :  allBooks;
+    const searchResults = this.props.searchresults;
+    const showingBooks = this.state.query === '' ? [] :  searchResults;
     const addBooksToShelf = this.props.onUpdateBooks;
 
     return(
