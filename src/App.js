@@ -13,6 +13,21 @@ class App extends React.Component {
     books: [],
     searchResults: []
   }
+
+  debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
   
   componentDidMount(){
     this.getAllBooks();
@@ -28,12 +43,15 @@ class App extends React.Component {
   }
   
   searchBooks = (book, limit) => {
-    BooksAPI.search(book, limit)
-    .then((allBooks)=>{
-      this.setState(()=>({
-        allBooks
-      }))
-    })
+    const processChange = this.debounce(()=> {
+      BooksAPI.search(book, limit)
+      .then((searchResults)=>{
+        this.setState(()=>({
+          searchResults
+        }))
+      })
+    }, 600)
+    processChange();
   }
   
   updateBooks = (book, shelf) => {

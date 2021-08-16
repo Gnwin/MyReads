@@ -1,6 +1,8 @@
-import React from 'react'
+import React from "react";
 import { Link } from 'react-router-dom'
 import Book from './Book'
+//import { useMemo } from 'react'
+//import debounce from 'lodash.debounce';
 
 
 class SearchPage extends React.Component {
@@ -9,16 +11,23 @@ class SearchPage extends React.Component {
     limit: 10
   }
 
+  // sleep(milliseconds) {
+  //   const date = Date.now();
+  //   let currentDate = null;
+  //   do {
+  //     currentDate = Date.now();
+  //   } while (currentDate - date < milliseconds);
+  // }
+
   updateQuery = (query) => {
     this.setState(()=>({
       query
     }))
-
-    //if (query.length < 3) return;
-
+    if (query.length < 3) return;
     this.props.onSearchBooks(this.state.query, this.state.limit);
   }
-  
+
+
   clearQuery = () => {
     this.updateQuery('');
   }
@@ -26,7 +35,7 @@ class SearchPage extends React.Component {
   render(){
 	
     const searchResults = this.props.searchresults;
-    const showingBooks = this.state.query === '' ? [] :  searchResults;
+    const showingBooks = this.state.query === '' ? [] : searchResults;
     const addBooksToShelf = this.props.onUpdateBooks;
 
     return(
@@ -40,7 +49,7 @@ class SearchPage extends React.Component {
               type="text" 
               placeholder="Search by title or author"
               value={this.state.query}
-              onChange={(e)=> this.updateQuery(e.target.value)}
+              onChange={(e)=>this.updateQuery(e.target.value)}
             />
 
           </div>
