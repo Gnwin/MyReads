@@ -21,7 +21,11 @@ class Book extends React.Component {
               </div>
           </div>
           <div className="book-title">{bookTitle}</div>
-          <div className="book-authors">{bookAuthor}</div>
+          <div className="book-authors">
+            {Object.values(bookAuthor).map((writer)=>(
+              <p key={writer} style={{margin: 0}}>{writer}.</p>
+            ))}
+          </div>
         </div>
       </li>
     )

@@ -23,7 +23,7 @@ class SearchPage extends React.Component {
     this.setState(()=>({
       query
     }))
-    if (query.length < 3) return;
+    if (this.state.length < 3) return;
     this.props.onSearchBooks(this.state.query, this.state.limit);
   }
 

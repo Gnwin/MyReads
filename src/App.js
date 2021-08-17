@@ -42,18 +42,15 @@ class App extends React.Component {
     })
   }
   
-  searchBooks = (book, limit) => {
-    const processChange = this.debounce(()=> {
-      BooksAPI.search(book, limit)
-      .then((searchResults)=>{
+  searchBooks = this.debounce((book, limit) => {
+    BooksAPI.search(book, limit)
+    .then((searchResults)=>{
         this.setState(()=>({
           searchResults
         }))
-      })
-    }, 600)
-    processChange();
-  }
-  
+    })
+  }, 600);
+
   updateBooks = (book, shelf) => {
     BooksAPI.update(book, shelf)
       .then(()=>{
@@ -69,11 +66,10 @@ class App extends React.Component {
       	  <h1>MyReads</h1>
       	</div>
         
-        <Route exact path='/' render={()=>(
+        <Route exact path='/' >
           <BookShelf books={this.state.books} onUpdateBooks={this.updateBooks} />
-        )} />
+        </Route>
 
-		
 		    <Route path='/search' render={({ history })=>(
           <SearchPage onSearchBooks={this.searchBooks} searchresults={this.state.searchResults} onUpdateBooks={this.updateBooks} />
         )}/>

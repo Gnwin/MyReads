@@ -3,11 +3,8 @@ import React from 'react'
 
 class SelectShelf extends React.Component {
   
-  changeRank = (bookObject, value) => {
+  changeShelf = (bookObject, value) => {
     console.log(value);
-    if (value === 'none' || value === 'move' ){
-      return;
-    }
     console.log(bookObject, value);
     this.props.updatebook(bookObject, value);
   }
@@ -17,7 +14,7 @@ class SelectShelf extends React.Component {
     const book = this.props.bookobj;
     
     return(
-      <select value={book.shelf ? book.shelf : 'none'} onChange={(e)=>this.changeRank(book, e.target.value)}>
+      <select value={book.shelf ? book.shelf : 'none'} onChange={(e)=>this.changeShelf(book, e.target.value)}>
         <option value="move" disabled >Move to...</option>
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>

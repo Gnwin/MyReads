@@ -6,7 +6,6 @@ import Shelf from './Shelf'
 
 
 class BookShelf extends React.Component {
-
   state = {
     shelfNames: ["currentlyReading", "wantToRead", "read"]
   }
