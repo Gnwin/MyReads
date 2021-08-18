@@ -10,11 +10,11 @@ class SelectShelf extends React.Component {
   }
   
   render(){
-    
+  
     const book = this.props.bookobj;
     
     return(
-      <select value={book.shelf ? book.shelf : 'none'} onChange={(e)=>this.changeShelf(book, e.target.value)}>
+      <select value={book.shelf ? book.shelf : 'none' } onChange={(e)=>this.changeShelf(book, e.target.value)}>
         <option value="move" disabled >Move to...</option>
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>

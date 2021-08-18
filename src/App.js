@@ -59,6 +59,22 @@ class App extends React.Component {
   }
   
   render(){
+
+    let getBookIds = this.state.books.map(bk=>bk.id);
+    let results = this.state.searchResults.filter(commonIds=> getBookIds.includes(commonIds.id));
+    let results1 = this.state.searchResults.filter(diffIds=> !getBookIds.includes(diffIds.id));
+
+    for(let i=0; i<results.length; i++){
+      if(getBookIds.includes(results[i].id)){
+        let commonBooks = this.state.books.filter(bookItem => bookItem.id === results[i].id);
+        for (let j = 0; j < commonBooks.length; j++){
+          results[i].shelf = commonBooks[j].shelf;
+        }
+      }
+    }
+
+    let realSearchResults = results1.concat(results);
+
     return(
       <div className="list-books">
       
@@ -71,9 +87,12 @@ class App extends React.Component {
         </Route>
 
 		    <Route path='/search' render={({ history })=>(
-          <SearchPage onSearchBooks={this.searchBooks} searchresults={this.state.searchResults} onUpdateBooks={this.updateBooks} />
+          <SearchPage 
+            onSearchBooks={this.searchBooks} 
+            searchresults={realSearchResults} 
+            onUpdateBooks={this.updateBooks} 
+            sortedbooks={this.state.books} />
         )}/>
-
       </div>
     )
   }

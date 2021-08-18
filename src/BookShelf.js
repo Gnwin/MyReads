@@ -38,7 +38,7 @@ class BookShelf extends React.Component {
             key={name} 
             shelf={name} 
             content={this.addBooks(books)[index]} 
-            updatebookshelf={updateBookShelf} 
+            updatebookshelf={updateBookShelf}
           />
 		    ))}
         </div>

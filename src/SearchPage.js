@@ -11,14 +11,6 @@ class SearchPage extends React.Component {
     limit: 10
   }
 
-  // sleep(milliseconds) {
-  //   const date = Date.now();
-  //   let currentDate = null;
-  //   do {
-  //     currentDate = Date.now();
-  //   } while (currentDate - date < milliseconds);
-  // }
-
   updateQuery = (query) => {
     this.setState(()=>({
       query
@@ -33,7 +25,6 @@ class SearchPage extends React.Component {
   }
   
   render(){
-	
     const searchResults = this.props.searchresults;
     const showingBooks = this.state.query === '' ? [] : searchResults;
     const addBooksToShelf = this.props.onUpdateBooks;
@@ -71,6 +62,7 @@ class SearchPage extends React.Component {
               title={book.title} 
               author={book.authors} 
               updateshelf={addBooksToShelf}
+              // adddd={sortedBooks}
             />
           ))}
 		      </ol>   
