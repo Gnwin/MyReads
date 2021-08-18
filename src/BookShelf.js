@@ -1,3 +1,4 @@
+import { string } from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -7,15 +8,23 @@ import Shelf from './Shelf'
 
 class BookShelf extends React.Component {
   state = {
-    shelfNames: ["currentlyReading", "wantToRead", "read"]
+    shelfNames: ["Currently Reading", "Want To Read", "Read"]
   }
   
   addBooks = items => {
-    const shelfs = this.state.shelfNames.map((name) => {
+    return this.convertToPascalCase().map((name) => {
       const shelf = items.filter(item =>item.shelf === name);
       return shelf;
     })
-    return shelfs;
+  }
+
+  convertToPascalCase = () => {
+    return this.state.shelfNames.map(word => {
+      let splitShelfName = word.split(" ");
+      splitShelfName[0] = splitShelfName[0].toLowerCase();
+      splitShelfName = splitShelfName.join('');
+      return splitShelfName;
+    })
   }
   
   createShelf = (currentShelfNames, shelf) => {

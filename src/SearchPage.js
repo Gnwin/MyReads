@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import Book from './Book'
-//import { useMemo } from 'react'
-//import debounce from 'lodash.debounce';
 
 
 class SearchPage extends React.Component {
@@ -18,7 +16,6 @@ class SearchPage extends React.Component {
     if (this.state.length < 3) return;
     this.props.onSearchBooks(this.state.query, this.state.limit);
   }
-
 
   clearQuery = () => {
     this.updateQuery('');
@@ -62,7 +59,6 @@ class SearchPage extends React.Component {
               title={book.title} 
               author={book.authors} 
               updateshelf={addBooksToShelf}
-              // adddd={sortedBooks}
             />
           ))}
 		      </ol>   

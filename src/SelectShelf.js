@@ -4,8 +4,6 @@ import React from 'react'
 class SelectShelf extends React.Component {
   
   changeShelf = (bookObject, value) => {
-    console.log(value);
-    console.log(bookObject, value);
     this.props.updatebook(bookObject, value);
   }
   
