@@ -12,13 +12,12 @@ class BookShelf extends React.Component {
   }
   
   addBooks = items => {
-    return this.convertToPascalCase().map((name) => {
-      const shelf = items.filter(item =>item.shelf === name);
-      return shelf;
+    return this.convertShelfNamesToPascalCase().map((name) => {
+      return items.filter(item =>item.shelf === name);
     })
   }
 
-  convertToPascalCase = () => {
+  convertShelfNamesToPascalCase = () => {
     return this.state.shelfNames.map(word => {
       let splitShelfName = word.split(" ");
       splitShelfName[0] = splitShelfName[0].toLowerCase();
@@ -28,6 +27,9 @@ class BookShelf extends React.Component {
   }
   
   createShelf = (currentShelfNames, shelf) => {
+    shelf = shelf.split(" ").map(item=>{
+      return item.charAt(0).toUpperCase() + item.slice(1)
+    }).join(' ');
     this.setState((currentShelfNames)=({
       shelfNames: [...currentShelfNames.shelfNames, shelf]
     }))
@@ -37,7 +39,6 @@ class BookShelf extends React.Component {
     const books = this.props.books;
     const updateBookShelf = this.props.onUpdateBooks;
   
-
     return(
       
       <div className="list-books-content">
