@@ -1,4 +1,3 @@
-import { string } from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -36,6 +35,7 @@ class BookShelf extends React.Component {
   }
   
   render(){
+    
     const books = this.props.books;
     const updateBookShelf = this.props.onUpdateBooks;
   

@@ -5,6 +5,7 @@ import SelectShelf from './SelectShelf'
 class Book extends React.Component {
   
   render(){
+    
     const bookCoverImg = this.props.thumbnail;
     const bookTitle = this.props.title;
     const bookAuthor = this.props.author;

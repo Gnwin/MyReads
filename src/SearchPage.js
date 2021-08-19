@@ -22,6 +22,7 @@ class SearchPage extends React.Component {
   }
   
   render(){
+    
     const searchResults = this.props.searchresults;
     const showingBooks = this.state.query === '' ? [] : searchResults;
     const addBooksToShelf = this.props.onUpdateBooks;

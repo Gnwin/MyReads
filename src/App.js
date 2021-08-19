@@ -60,24 +60,22 @@ class App extends React.Component {
   
   render(){
 
-    let getBookIds = this.state.books.map(bk=>bk.id);
-    let results = this.state.searchResults.filter(commonIds=> getBookIds.includes(commonIds.id));
-    let results1 = this.state.searchResults.filter(diffIds=> !getBookIds.includes(diffIds.id));
+    const getBookIds = this.state.books.map(bk=>bk.id);
+    const results = this.state.searchResults.filter(commonIds=> getBookIds.includes(commonIds.id));
+    const results1 = this.state.searchResults.filter(diffIds=> !getBookIds.includes(diffIds.id));
 
     for(let i=0; i<results.length; i++){
       if(getBookIds.includes(results[i].id)){
-        let commonBooks = this.state.books.filter(bookItem => bookItem.id === results[i].id);
+        const commonBooks = this.state.books.filter(bookItem => bookItem.id === results[i].id);
         for (let j = 0; j < commonBooks.length; j++){
           results[i].shelf = commonBooks[j].shelf;
         }
       }
     }
 
-    let realSearchResults = results1.concat(results);
-
     return(
+
       <div className="list-books">
-      
       	<div className="list-books-title">
       	  <h1>MyReads</h1>
       	</div>
@@ -89,11 +87,12 @@ class App extends React.Component {
 		    <Route path='/search' render={({ history })=>(
           <SearchPage 
             onSearchBooks={this.searchBooks} 
-            searchresults={realSearchResults} 
+            searchresults={results1.concat(results)} 
             onUpdateBooks={this.updateBooks} 
             sortedbooks={this.state.books} />
         )}/>
       </div>
+      
     )
   }
 

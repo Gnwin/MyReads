@@ -5,6 +5,7 @@ import Book from './Book'
 class Shelf extends React.Component{
 
   render(){
+    
     const name = this.props.shelf;
     const books = this.props.content;
     const updateShelf = this.props.updatebookshelf;

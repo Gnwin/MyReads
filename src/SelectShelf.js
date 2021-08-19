@@ -8,7 +8,7 @@ class SelectShelf extends React.Component {
   }
   
   render(){
-  
+    
     const book = this.props.bookobj;
     
     return(
