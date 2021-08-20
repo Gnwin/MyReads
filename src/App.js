@@ -61,7 +61,7 @@ class App extends React.Component {
     const getBookIds = this.state.books.map(bk=>bk.id);
 
     let searchR = this.state.searchResults;
-    if (!searchR) {
+    if (!Array.isArray(searchR)) {
       searchR = [];
     }
     searchR = searchR.filter(fi=> Object.keys(fi).length === 21);
