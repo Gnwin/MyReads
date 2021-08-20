@@ -10,6 +10,10 @@ class Shelf extends React.Component{
     updatebookshelf: PropTypes.func.isRequired
   }
 
+  // state = {
+  //   unknownImg: '/arrow-drop-down.svg'
+  // }
+
   render(){
 
     const name = this.props.shelf;
@@ -26,9 +30,9 @@ class Shelf extends React.Component{
 		        <Book 
               key={book.id} 
               bookItem={book} 
-              thumbnail={book.imageLinks.thumbnail}  
+              thumbnail={book.imageLinks.thumbnail}
               title={book.title} 
-              author={book.authors} 
+              author={book.authors}
               updateshelf={updateShelf}
             />
           ))}

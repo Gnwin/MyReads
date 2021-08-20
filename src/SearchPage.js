@@ -20,7 +20,7 @@ class SearchPage extends React.Component {
     this.setState(()=>({
       query
     }))
-    if (query.length < 1) return
+    if (query.length < 2) return
     this.props.onSearchBooks(query);
   }
 
@@ -64,7 +64,7 @@ class SearchPage extends React.Component {
             <Book 
               key={book.id} 
               bookItem={book} 
-              thumbnail={book.imageLinks.thumbnail} 
+              thumbnail={book.imageLinks ? book.imageLinks.thumbnail : '/arrow-drop-down.svg' } 
               title={book.title} 
               author={book.authors} 
               updateshelf={addBooksToShelf}

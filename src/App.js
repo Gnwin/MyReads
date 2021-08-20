@@ -64,12 +64,8 @@ class App extends React.Component {
     if (!Array.isArray(searchR)) {
       searchR = [];
     }
-    searchR = searchR.filter(fi=> Object.keys(fi).length === 21);
     const results = searchR.filter(commonIds=> getBookIds.includes(commonIds.id));
     const results1 = searchR.filter(diffIds=> !getBookIds.includes(diffIds.id));
-
-    // const results = this.state.searchResults.filter(commonIds=> getBookIds.includes(commonIds.id));
-    // const results1 = this.state.searchResults.filter(diffIds=> !getBookIds.includes(diffIds.id));
 
     for(let i=0; i<results.length; i++){
       if(getBookIds.includes(results[i].id)){
