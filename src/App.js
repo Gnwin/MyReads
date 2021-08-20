@@ -59,7 +59,7 @@ class App extends React.Component {
   render(){
 
     const getBookIds = this.state.books.map(bk=>bk.id);
-
+    
     let searchR = this.state.searchResults;
     if (!Array.isArray(searchR)) {
       searchR = [];
