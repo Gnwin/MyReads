@@ -1,11 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import Shelf from './Shelf'
 
 
 
 class BookShelf extends React.Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    onUpdateBooks: PropTypes.func.isRequired
+  }
+
   state = {
     shelfNames: ["Currently Reading", "Want To Read", "Read"]
   }
@@ -35,7 +41,7 @@ class BookShelf extends React.Component {
   }
   
   render(){
-    
+
     const books = this.props.books;
     const updateBookShelf = this.props.onUpdateBooks;
   

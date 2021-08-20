@@ -6,8 +6,6 @@ import { Route } from 'react-router-dom'
 import BookShelf from './BookShelf'
 import SearchPage from './SearchPage'
 
-
-
 class App extends React.Component {
   state = {
     books: [],
@@ -49,7 +47,7 @@ class App extends React.Component {
           searchResults
         }))
     })
-  }, 600);
+  }, 300);
 
   updateBooks = (book, shelf) => {
     BooksAPI.update(book, shelf)
@@ -61,8 +59,17 @@ class App extends React.Component {
   render(){
 
     const getBookIds = this.state.books.map(bk=>bk.id);
-    const results = this.state.searchResults.filter(commonIds=> getBookIds.includes(commonIds.id));
-    const results1 = this.state.searchResults.filter(diffIds=> !getBookIds.includes(diffIds.id));
+
+    let searchR = this.state.searchResults;
+    if (!searchR) {
+      searchR = [];
+    }
+    searchR = searchR.filter(fi=> Object.keys(fi).length === 21);
+    const results = searchR.filter(commonIds=> getBookIds.includes(commonIds.id));
+    const results1 = searchR.filter(diffIds=> !getBookIds.includes(diffIds.id));
+
+    // const results = this.state.searchResults.filter(commonIds=> getBookIds.includes(commonIds.id));
+    // const results1 = this.state.searchResults.filter(diffIds=> !getBookIds.includes(diffIds.id));
 
     for(let i=0; i<results.length; i++){
       if(getBookIds.includes(results[i].id)){
@@ -72,6 +79,7 @@ class App extends React.Component {
         }
       }
     }
+
 
     return(
 
@@ -88,11 +96,10 @@ class App extends React.Component {
           <SearchPage 
             onSearchBooks={this.searchBooks} 
             searchresults={results1.concat(results)} 
-            onUpdateBooks={this.updateBooks} 
-            sortedbooks={this.state.books} />
+            onUpdateBooks={this.updateBooks} />
         )}/>
       </div>
-      
+
     )
   }
 

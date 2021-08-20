@@ -1,28 +1,35 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import Book from './Book'
+import PropTypes from 'prop-types'
 
 
 class SearchPage extends React.Component {
+  static propTypes = {
+    onSearchBooks: PropTypes.func.isRequired,
+    searchresults: PropTypes.array.isRequired,
+    onUpdateBooks: PropTypes.func.isRequired
+  }
+
   state = {
     query: "",
-    limit: 10
+    limit: 20
   }
 
   updateQuery = (query) => {
     this.setState(()=>({
       query
     }))
-    if (this.state.length < 3) return;
-    this.props.onSearchBooks(this.state.query, this.state.limit);
+    if (this.state.query.length < 1) return
+    this.props.onSearchBooks(this.state.query);
   }
 
-  clearQuery = () => {
-    this.updateQuery('');
+  clearQuery = (val) => {
+    this.updateQuery(val);
   }
   
   render(){
-    
+
     const searchResults = this.props.searchresults;
     const showingBooks = this.state.query === '' ? [] : searchResults;
     const addBooksToShelf = this.props.onUpdateBooks;
@@ -37,6 +44,7 @@ class SearchPage extends React.Component {
             <input 
               type="text" 
               placeholder="Search by title or author"
+              minLength={2}
               value={this.state.query}
               onChange={(e)=>this.updateQuery(e.target.value)}
             />
@@ -47,7 +55,7 @@ class SearchPage extends React.Component {
         <div className="search-books-results">
           {showingBooks.length !== 0 && (
             <div className='showing-books'>
-              <span>Now Showing {showingBooks.length} results</span>
+              <span>Now Showing {showingBooks.length} of {this.state.limit} results</span>
             </div>
           )}
 			

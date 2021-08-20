@@ -1,14 +1,19 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 
 class SelectShelf extends React.Component {
+  static propTypes = {
+    bookobj: PropTypes.object.isRequired,
+    updatebook: PropTypes.func.isRequired
+  }
   
   changeShelf = (bookObject, value) => {
     this.props.updatebook(bookObject, value);
   }
   
   render(){
-    
+
     const book = this.props.bookobj;
     
     return(

@@ -1,11 +1,13 @@
 {
   "dependencies": {
+    "escape-string-regexp": "^5.0.0",
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
