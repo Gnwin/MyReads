@@ -22,12 +22,9 @@ class Book extends React.Component {
     const { unknownImg, unknownAuthor } = this.state;
 
     const bookCoverImg = this.props.thumbnail;
-
     const bookTitle = this.props.title;
-
     let bookAuthor = this.props.author;
     bookAuthor = bookAuthor ? bookAuthor : unknownAuthor;
-
     const bookObject = this.props.bookItem;
     const updateBook = this.props.updateshelf;
     
