@@ -20,7 +20,7 @@ class SearchPage extends React.Component {
     this.setState(()=>({
       query
     }))
-    if (query.length < 2) return
+    if (query.length < 1) return
     this.props.onSearchBooks(query);
   }
 
