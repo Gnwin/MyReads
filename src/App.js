@@ -28,10 +28,6 @@ class App extends React.Component {
   };
   
   componentDidMount(){
-    this.getAllBooks();
-  }
-
-  getAllBooks = () =>{
     BooksAPI.getAll()
     .then((books)=>{
       this.setState(()=>({
@@ -52,8 +48,11 @@ class App extends React.Component {
   updateBooks = (book, shelf) => {
     BooksAPI.update(book, shelf)
       .then(()=>{
-        this.getAllBooks();
-    })
+        book.shelf = shelf;
+        this.setState((oldState)=>({
+          books: oldState.books.filter(b => b.id !== book.id).concat([ book ])
+        }))
+      })
   }
   
   render(){
