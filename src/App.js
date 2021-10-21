@@ -39,9 +39,28 @@ class App extends React.Component {
   searchBooks = this.debounce((book, limit) => {
     BooksAPI.search(book, limit)
     .then((searchResults)=>{
-        this.setState(()=>({
-          searchResults
-        }))
+
+      const getBookIds = this.state.books.map(bk=>bk.id);
+    
+      // let searchR = this.state.searchResults;
+      if (!Array.isArray(searchResults)) {
+        searchResults = [];
+      }
+      const results = searchResults.filter(commonIds=> getBookIds.includes(commonIds.id));
+      const results1 = searchResults.filter(diffIds=> !getBookIds.includes(diffIds.id));
+
+      for(let i=0; i<results.length; i++){
+        if(getBookIds.includes(results[i].id)){
+          const commonBooks = this.state.books.filter(bookItem => bookItem.id === results[i].id);
+          for (let j = 0; j < commonBooks.length; j++){
+            results[i].shelf = commonBooks[j].shelf;
+          }
+        }
+      }
+
+      this.setState(()=>({
+        searchResults : results1.concat(results)
+      }))
     })
   }, 300);
 
@@ -61,23 +80,23 @@ class App extends React.Component {
   
   render(){
 
-    const getBookIds = this.state.books.map(bk=>bk.id);
+    // const getBookIds = this.state.books.map(bk=>bk.id);
     
-    let searchR = this.state.searchResults;
-    if (!Array.isArray(searchR)) {
-      searchR = [];
-    }
-    const results = searchR.filter(commonIds=> getBookIds.includes(commonIds.id));
-    const results1 = searchR.filter(diffIds=> !getBookIds.includes(diffIds.id));
+    // let searchR = this.state.searchResults;
+    // if (!Array.isArray(searchR)) {
+    //   searchR = [];
+    // }
+    // const results = searchR.filter(commonIds=> getBookIds.includes(commonIds.id));
+    // const results1 = searchR.filter(diffIds=> !getBookIds.includes(diffIds.id));
 
-    for(let i=0; i<results.length; i++){
-      if(getBookIds.includes(results[i].id)){
-        const commonBooks = this.state.books.filter(bookItem => bookItem.id === results[i].id);
-        for (let j = 0; j < commonBooks.length; j++){
-          results[i].shelf = commonBooks[j].shelf;
-        }
-      }
-    }
+    // for(let i=0; i<results.length; i++){
+    //   if(getBookIds.includes(results[i].id)){
+    //     const commonBooks = this.state.books.filter(bookItem => bookItem.id === results[i].id);
+    //     for (let j = 0; j < commonBooks.length; j++){
+    //       results[i].shelf = commonBooks[j].shelf;
+    //     }
+    //   }
+    // }
 
 
     return(
@@ -94,7 +113,7 @@ class App extends React.Component {
 		    <Route path='/search' render={({ history })=>(
           <SearchPage 
             onSearchBooks={this.searchBooks} 
-            searchresults={results1.concat(results)} 
+            searchresults={this.state.searchResults} 
             onUpdateBooks={this.updateBooks} />
         )}/>
       </div>

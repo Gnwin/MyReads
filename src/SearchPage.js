@@ -58,6 +58,18 @@ class SearchPage extends React.Component {
               <span>Now Showing {showingBooks.length} of {this.state.limit} results</span>
             </div>
           )}
+
+          {this.state.query < 1 && (
+            <div className='showing-books'>
+              <span>Type at least a character in the input field</span>
+            </div>
+          )}
+
+          {/* {this.state.query >= 1 && showingBooks.length === 0 && (
+            <div className='showing-books'>
+              <span>No matches for your search item</span>
+            </div>
+          )} */}
 			
           <ol className="books-grid">
 				  {showingBooks.map((book)=>(
