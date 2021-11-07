@@ -13,6 +13,15 @@ class App extends React.Component {
     searchResults: []
   }
 
+  componentDidMount(){
+    BooksAPI.getAll()
+    .then((books)=>{
+      this.setState(()=>({
+        books
+      }))
+    })
+  }
+
   debounce(func, wait, immediate) {
     var timeout;
     return function() {
@@ -27,15 +36,6 @@ class App extends React.Component {
       if (callNow) func.apply(context, args);
     };
   };
-  
-  componentDidMount(){
-    BooksAPI.getAll()
-    .then((books)=>{
-      this.setState(()=>({
-        books
-      }))
-    })
-  }
   
   searchBooks = this.debounce((book, limit) => {
     BooksAPI.search(book, limit)
