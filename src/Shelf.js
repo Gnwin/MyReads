@@ -10,10 +10,6 @@ class Shelf extends React.Component{
     updatebookshelf: PropTypes.func.isRequired
   }
 
-  // state = {
-  //   unknownImg: '/arrow-drop-down.svg'
-  // }
-
   render(){
 
     const name = this.props.shelf;
